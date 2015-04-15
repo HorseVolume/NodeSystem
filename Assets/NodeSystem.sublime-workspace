@@ -1,0 +1,345 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tar",
+				"target	Editor.*"
+			],
+			[
+				"Edi",
+				"Editor	[class]"
+			],
+			[
+				"Vecto",
+				"Vector3	*(x, y)"
+			],
+			[
+				"OnEn",
+				"OnEnable	MaterialEditor.*()"
+			],
+			[
+				"material",
+				"material	*(shader)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Scripts/NodeController.cs",
+			"settings":
+			{
+				"buffer_size": 582,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Editor/NodeLinks.cs",
+			"settings":
+			{
+				"buffer_size": 1695,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Scripts/Node.cs",
+			"settings":
+			{
+				"buffer_size": 649,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 567.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: I",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"c#",
+				"Set Syntax: C#"
+			]
+		],
+		"width": 600.0
+	},
+	"console":
+	{
+		"height": 186.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem2/Assets",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem2/Assets/Editor",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem2/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem2/Assets/NodeSystem.sublime-project",
+		"/C/Users/tyisr_000/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/tyisr_000/Documents/Unity/Splines/Assets/Editor/LineInspector.cs",
+		"/C/Users/tyisr_000/Documents/Unity/Splines/Assets/Scripts/Line.cs",
+		"/C/Users/tyisr_000/Documents/Unity/Splines/splines.sublime-project",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/Link.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/Node.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/BringToFront.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/ModalPanel.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/TestModalWindow.cs",
+		"/C/Users/tyisr_000/Documents/Unity/ChartyTest/Assets/Charty/Example.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/CameraController.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Data/layout.xml",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Editor/Editor.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Scripts/GameController.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Link.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/GameController.cs",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/Assets/Standard Assets/Cameras/Scripts/FreeLookCam.cs",
+		"/C/Users/tyisr_000/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/tyisr_000/Documents/Unity/NodeSystem/NodeSystem.sublime-project"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"nodePrefab",
+			"NodeCount",
+			"GUIText"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Scripts/NodeController.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 582,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Editor/NodeLinks.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Scripts/Node.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 43.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "NodeSystem.sublime-project",
+	"replace":
+	{
+		"height": 66.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

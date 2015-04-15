@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta"
+			],
+			"path": "C:\\Users\\tyisr_000\\Documents\\Unity\\NodeSystem2\\Assets",
+
+		}
+	]
+}
