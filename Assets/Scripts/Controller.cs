@@ -5,6 +5,9 @@ public class Controller : MonoBehaviour {
 
 	//peek circle
 	public GameObject peekCircle;
+	public Vector3 scaleTo;
+	public Vector3 scaleFrom;
+	public float scaleTime;
 
 	//mouselook
 	public GameObject mainCamera;
@@ -71,11 +74,13 @@ public class Controller : MonoBehaviour {
 				//Debug.Log(userTargetNodeAngles[i] + " " + userAngle);
 				if (userAngle < (userTargetNodeAngles[i] + targetingWiggleRoom) && userAngle > (userTargetNodeAngles[i] - targetingWiggleRoom)){
 					//hilighting
-					peekCircle.transform.position = userTargetNodeTargets[i].transform.position;
-					peekCircle.SetActive(true);
-					peekCircle.ScaleTo(300, Vector3(6,6,6), 0);
+					peekCircle.transform.position = userTargetNodeTargets[i].transform.position + Vector3.back;
+					//peekCircle.SetActive(true);
+					iTween.ScaleTo(peekCircle, scaleTo ,scaleTime);
+					//peekCircle.ScaleTo(300, Vector3(6,6,6), 0);
 				} else {
-					peekCircle.SetActive(false);
+					//iTween.ScaleTo(peekCircle, scaleFrom ,scaleTime);
+					//peekCircle.SetActive(false);
 				}
 			}
 
