@@ -8,6 +8,9 @@ public class Controller : MonoBehaviour {
 	public Vector3 scaleTo;
 	public Vector3 scaleFrom;
 	public float scaleTime;
+	private Animator peekAnimator;
+	private bool peekIsActive;
+
 
 	//mouselook
 	public GameObject mainCamera;
@@ -42,6 +45,7 @@ public class Controller : MonoBehaviour {
 	void Start () {
 		//fill target array
 		targets = GameObject.FindGameObjectsWithTag ("Node");
+		peekAnimator = peekCircle.GetComponent<Animator> ();
 
 		//start user on START node
 		if (targets.Length > 0) {
@@ -69,6 +73,9 @@ public class Controller : MonoBehaviour {
 
 		//targets
 		userAngle = Mathf.Atan2(userDirection.y, userDirection.x) * Mathf.Rad2Deg;
+
+		peekIsActive = false;
+
 		for (int i = 0; i < userTargetNodeAngles.Length; i++) {
 			if (userTargetNodeAngles[i] != 0){
 				//Debug.Log(userTargetNodeAngles[i] + " " + userAngle);
@@ -76,15 +83,23 @@ public class Controller : MonoBehaviour {
 					//hilighting
 					peekCircle.transform.position = userTargetNodeTargets[i].transform.position + Vector3.back;
 					//peekCircle.SetActive(true);
-					iTween.ScaleTo(peekCircle, scaleTo ,scaleTime);
+					//iTween.ScaleTo(peekCircle, scaleTo ,scaleTime);
 					//peekCircle.ScaleTo(300, Vector3(6,6,6), 0);
-				} else {
-					//iTween.ScaleTo(peekCircle, scaleFrom ,scaleTime);
-					//peekCircle.SetActive(false);
-				}
+					peekIsActive = true;
+
+				} 
 			}
 
 		}
+
+		if (peekCircle.transform.localScale.x <= 0 && peekIsActive == true) {
+			peekAnimator.SetBool ("open", true);
+			
+		} else if (peekCircle.transform.localScale.x > 0 && peekIsActive == false) {
+			peekAnimator.SetBool ("open", false);
+		}
+
+ 
 
 		
 	}
