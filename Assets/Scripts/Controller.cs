@@ -184,7 +184,7 @@ public class Controller : MonoBehaviour {
 
 					peekIsActive = true;
 					GameObject hintTextTemp = userTargetNodeTargets[i].transform.GetChild(0).gameObject;
-					Vector3 screenPosTemp = mainCamera.GetComponent<Camera> ().ScreenToWorldPoint (new Vector3(Screen.width / 2, Screen.height - 20, 6));
+					Vector3 screenPosTemp = mainCamera.GetComponent<Camera> ().ScreenToWorldPoint (new Vector3(Screen.width, Screen.height, 6));
 					iTween.MoveUpdate(hintTextTemp,screenPosTemp, hintSpeed);
 					iTween.ScaleUpdate(hintTextTemp, hintTextScale, hintSpeed);
 
