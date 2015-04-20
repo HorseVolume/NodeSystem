@@ -3,6 +3,11 @@ using System.Collections;
 
 public class Node : MonoBehaviour {
 
+	public string hint;
+	[Multiline]
+	public string[] previewText;
+	private TextMesh hintText;
+
 	public GameObject[] targets;
 	public Vector3[] targetHeadings;
 	public bool isActiveNode;
@@ -10,6 +15,17 @@ public class Node : MonoBehaviour {
 	private GameObject[] links;
 
 	public void Awake() {
+
+		if (transform.childCount > 0) {
+			hintText = transform.GetChild (0).GetComponent<TextMesh> ();
+			hintText.text = hint;
+			Vector3 parentTemp2 = this.transform.position;
+			parentTemp2 = new Vector3(parentTemp2.x - 1, parentTemp2.y + 2, parentTemp2.z);
+			hintText.transform.position = parentTemp2;
+
+
+		}
+
 
 
 		if (targets.Length > 0 && targets[0]) {

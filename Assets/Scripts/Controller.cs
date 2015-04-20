@@ -5,6 +5,7 @@ public class Controller : MonoBehaviour {
 
 	//peek circle
 	public GameObject peekCircle;
+	public TextMesh peekText;
 	public Vector3 scaleTo;
 	public Vector3 scaleFrom;
 	public float scaleTime;
@@ -13,12 +14,43 @@ public class Controller : MonoBehaviour {
 
 
 	//mouselook
+	public bool mouseLookEnabled;
 	public GameObject mainCamera;
 	public GameObject user;
 	public Transform angleTarget;
 
+	//HintText
+	public Vector3 hintTextScale;
+	public Vector3 previousHintTextScale;
+	public float hintSpeed;
+
+	//Emotions
+	public Color angerColor;
+	public Color compassionColor;
+	public Color suspicionColor;
+
+	public float angerStrength;
+	public float compassionStrength;
+	public float suspicionStrength;
+
+	private int currentEmotion = 0;
+
 
 	private Vector3 mousePosition;
+
+
+
+	//Clicking
+	private Vector3 clickPoint;
+	
+	//private float outlineWidth = 10f;
+//	private int  prevOutlineWidth = 10;
+	
+	//private bool infoBox = false;
+	//private bool pointers = false;
+	//private bool outline = false;
+	
+	private Vector2 userScreenPos;
 
 
 	//user rotation
@@ -41,8 +73,15 @@ public class Controller : MonoBehaviour {
 	private Vector3 userTargetNodeDirection;
 
 
+
+
+
 	// Use this for initialization
 	void Start () {
+
+
+
+
 		//fill target array
 		targets = GameObject.FindGameObjectsWithTag ("Node");
 		peekAnimator = peekCircle.GetComponent<Animator> ();
@@ -52,26 +91,80 @@ public class Controller : MonoBehaviour {
 			GetTargetAngles();
 		}
 
+
+
+		mainCamera.transform.position = new Vector3 (user.transform.position.x, user.transform.position.y, mainCamera.transform.position.z);
+
+
+
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//move camera
 		mousePosition = mainCamera.GetComponent<Camera> ().ScreenToWorldPoint (Input.mousePosition);
-		mainCamera.transform.position = new Vector3 ((user.transform.position.x + mousePosition.x) / 2, (user.transform.position.y + mousePosition.y) / 2, mainCamera.transform.position.z);
+
+		//move camera
+		if (mouseLookEnabled == true) {
 
 
-		//determine angle of user
-		userTargetDirection = user.transform.position - mousePosition;
-		userDirection = user.transform.position - angleTarget.position;
-		userTargetAngle = Mathf.Atan2(userTargetDirection.y, userTargetDirection.x) * Mathf.Rad2Deg;
-		//rotate user to mouse position
-		userRotation = Quaternion.AngleAxis (userTargetAngle, Vector3.forward);
-		user.transform.rotation = Quaternion.Slerp (user.transform.rotation, userRotation, Time.deltaTime * rotationSpeed);
+
+		}
+	
+		
+
+
+
+		
+
+		if (Input.GetMouseButtonDown (0)) {
+			clickPoint = mousePosition;
+		}
+
+		if (Input.GetKey ("left")) {
+
+
+
+		} else if (Input.GetKey ("right")) {
+
+
+		} else {
+			//mouselook
+			mainCamera.transform.position = new Vector3 ((user.transform.position.x + mousePosition.x) / 2, (user.transform.position.y + mousePosition.y) / 2, mainCamera.transform.position.z);
+			//move charty
+			userScreenPos = mainCamera.GetComponent<Camera> ().WorldToScreenPoint (user.transform.position);
+
+
+
+			//rotation user stuff
+
+			//determine angle of user
+			userTargetDirection = user.transform.position - mousePosition;
+			userDirection = user.transform.position - angleTarget.position;
+			userTargetAngle = Mathf.Atan2(userTargetDirection.y, userTargetDirection.x) * Mathf.Rad2Deg;
+			//rotate user to mouse position
+			userRotation = Quaternion.AngleAxis (userTargetAngle, Vector3.forward);
+			user.transform.rotation = Quaternion.Slerp (user.transform.rotation, userRotation, Time.deltaTime * rotationSpeed);
+		}
+	
+
+		
+
+		//Emotion Changing
+
+	
+
+
+
+
+
+
 
 		//targets
+
+		//angle user
 		userAngle = Mathf.Atan2(userDirection.y, userDirection.x) * Mathf.Rad2Deg;
 
 		peekIsActive = false;
@@ -82,27 +175,54 @@ public class Controller : MonoBehaviour {
 				if (userAngle < (userTargetNodeAngles[i] + targetingWiggleRoom) && userAngle > (userTargetNodeAngles[i] - targetingWiggleRoom)){
 					//hilighting
 					peekCircle.transform.position = userTargetNodeTargets[i].transform.position + Vector3.back;
+					peekText.transform.position = peekCircle.transform.position;
 					//peekCircle.SetActive(true);
 					//iTween.ScaleTo(peekCircle, scaleTo ,scaleTime);
 					//peekCircle.ScaleTo(300, Vector3(6,6,6), 0);
-					peekIsActive = true;
+					//set text
+					peekText.text = userTargetNodeTargets[i].GetComponent<Node>().previewText[0];
 
-				} 
+					peekIsActive = true;
+					GameObject hintTextTemp = userTargetNodeTargets[i].transform.GetChild(0).gameObject;
+					Vector3 screenPosTemp = mainCamera.GetComponent<Camera> ().ScreenToWorldPoint (new Vector3(Screen.width / 2, Screen.height - 20, 6));
+					iTween.MoveUpdate(hintTextTemp,screenPosTemp, hintSpeed);
+					iTween.ScaleUpdate(hintTextTemp, hintTextScale, hintSpeed);
+
+
+
+				} else {
+					//if (userTargetNodeTargets[i].transform.GetChild(0).transform.position != userTargetNodeTargets[i].transform.position) {
+					if (userTargetNodeTargets[i].transform.GetChild(0).gameObject) {
+						GameObject hintTextTemp2 = userTargetNodeTargets[i].transform.GetChild(0).gameObject;
+						Vector3 parentTemp2 = userTargetNodeTargets[i].transform.position;
+						parentTemp2 = new Vector3(parentTemp2.x - 1, parentTemp2.y + 2, parentTemp2.z);
+						iTween.MoveUpdate(hintTextTemp2,parentTemp2, hintSpeed);
+						iTween.ScaleUpdate(hintTextTemp2, previousHintTextScale, hintSpeed);
+					}
+
+
+					
+					//}
+				}
 			}
 
 		}
 
 		if (peekCircle.transform.localScale.x <= 0 && peekIsActive == true) {
 			peekAnimator.SetBool ("open", true);
-			
+			//peekText.text = userTargetNodeTargets[i].GetComponent<Node>().previewText[0];
 		} else if (peekCircle.transform.localScale.x > 0 && peekIsActive == false) {
 			peekAnimator.SetBool ("open", false);
+			peekText.text = "";
 		}
+
+
 
  
 
 		
 	}
+
 
 	void GetTargetAngles() {
 		for (int i = 0; i < targets.Length; i++) {

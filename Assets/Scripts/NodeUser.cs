@@ -18,12 +18,6 @@ public class NodeUser : MonoBehaviour {
 
 		normalizedHeading = angleTarget.transform.position - transform.position;
 		angle.text = "Angle: " + normalizedHeading;
-		if(Input.GetKey(KeyCode.LeftArrow)) {
-			transform.Rotate(0, 0, 2f, Space.Self);
-		}
-		if(Input.GetKey(KeyCode.RightArrow)) {
-			transform.Rotate(0, 0, -2f, Space.Self);
-		}
 
 	}
 }

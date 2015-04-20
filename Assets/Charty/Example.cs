@@ -75,7 +75,7 @@ public class Example : MonoBehaviour {
         if (GUI.RepeatButton(new Rect(10, 300, 100, 30), "Rotate CW")) rotateCW = true;
         if (GUI.RepeatButton(new Rect(20 + 100, 300, 100, 30), "Rotate CCW"))  rotateCCW = true;
 
-        if (rotateCW)   diagram.RotateCW();
+       	diagram.RotateCW();
         if (rotateCCW)  diagram.RotateCCW();
         
         OnChange();
