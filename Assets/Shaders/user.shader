@@ -1,12 +1,12 @@
 // Shader created with Shader Forge v1.13 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.13;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,nrsp:0,limd:0,spmd:1,trmd:0,grmd:0,uamb:False,mssp:True,bkdf:False,rprd:False,enco:False,rmgx:True,rpth:0,hqsc:True,hqlp:False,tesm:0,bsrc:0,bdst:1,culm:0,dpts:2,wrdp:True,dith:0,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:370,x:33748,y:32693,varname:node_370,prsc:2|custl-8673-RGB,clip-5707-R;n:type:ShaderForge.SFN_Tex2d,id:5707,x:33459,y:33171,ptovrint:False,ptlb:mask1,ptin:_mask1,varname:node_5707,prsc:2,tex:e83b40db98f06d74ca82b8996e56e8e6,ntxv:0,isnm:False;n:type:ShaderForge.SFN_TexCoord,id:6179,x:32698,y:32596,varname:node_6179,prsc:2,uv:0;n:type:ShaderForge.SFN_Color,id:8673,x:33261,y:32599,ptovrint:False,ptlb:node_8673,ptin:_node_8673,varname:node_8673,prsc:2,glob:False,c1:0.5,c2:0.5,c3:0.5,c4:1;proporder:5707-8673;pass:END;sub:END;*/
+/*SF_DATA;ver:1.13;sub:START;pass:START;ps:flbk:,lico:1,lgpr:1,nrmq:1,nrsp:0,limd:0,spmd:1,trmd:0,grmd:0,uamb:False,mssp:True,bkdf:False,rprd:False,enco:False,rmgx:True,rpth:0,hqsc:True,hqlp:False,tesm:0,bsrc:0,bdst:1,culm:0,dpts:2,wrdp:True,dith:0,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,ofsf:0,ofsu:0,f2p0:False;n:type:ShaderForge.SFN_Final,id:370,x:33748,y:32693,varname:node_370,prsc:2|custl-8673-RGB,clip-5707-R;n:type:ShaderForge.SFN_Tex2d,id:5707,x:33459,y:33171,ptovrint:False,ptlb:mask1,ptin:_mask1,varname:node_5707,prsc:2,tex:e83b40db98f06d74ca82b8996e56e8e6,ntxv:0,isnm:False;n:type:ShaderForge.SFN_TexCoord,id:6179,x:32698,y:32596,varname:node_6179,prsc:2,uv:0;n:type:ShaderForge.SFN_Color,id:8673,x:33261,y:32599,ptovrint:False,ptlb:color,ptin:_color,varname:node_8673,prsc:2,glob:False,c1:0.5,c2:0.5,c3:0.5,c4:1;proporder:5707-8673;pass:END;sub:END;*/
 
 Shader "Shader Forge/circlemask" {
     Properties {
         _mask1 ("mask1", 2D) = "white" {}
-        _node_8673 ("node_8673", Color) = (0.5,0.5,0.5,1)
+        _color ("color", Color) = (0.5,0.5,0.5,1)
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -31,7 +31,7 @@ Shader "Shader Forge/circlemask" {
             #pragma exclude_renderers gles3 metal d3d11_9x xbox360 xboxone ps3 ps4 psp2 
             #pragma target 3.0
             uniform sampler2D _mask1; uniform float4 _mask1_ST;
-            uniform float4 _node_8673;
+            uniform float4 _color;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
@@ -53,7 +53,7 @@ Shader "Shader Forge/circlemask" {
                 float4 _mask1_var = tex2D(_mask1,TRANSFORM_TEX(i.uv0, _mask1));
                 clip(_mask1_var.r - 0.5);
 ////// Lighting:
-                float3 finalColor = _node_8673.rgb;
+                float3 finalColor = _color.rgb;
                 fixed4 finalRGBA = fixed4(finalColor,1);
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;

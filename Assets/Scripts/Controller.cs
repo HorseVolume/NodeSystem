@@ -28,12 +28,15 @@ public class Controller : MonoBehaviour {
 	public Color angerColor;
 	public Color compassionColor;
 	public Color suspicionColor;
+	public GameObject emotionText;
+
 
 	public float angerStrength;
 	public float compassionStrength;
 	public float suspicionStrength;
 
 	private int currentEmotion = 0;
+	private int prevEmotion;
 
 
 	private Vector3 mousePosition;
@@ -106,6 +109,9 @@ public class Controller : MonoBehaviour {
 
 		mousePosition = mainCamera.GetComponent<Camera> ().ScreenToWorldPoint (Input.mousePosition);
 
+		emotionText.transform.position = new Vector3(user.transform.position.x - 4, user.transform.position.y - 1, user.transform.position.z);
+
+
 		//move camera
 		if (mouseLookEnabled == true) {
 
@@ -113,22 +119,34 @@ public class Controller : MonoBehaviour {
 
 		}
 	
-		
 
 
 
+		//prevEmotion = currentEmotion;
 		
 
 		if (Input.GetMouseButtonDown (0)) {
 			clickPoint = mousePosition;
 		}
 
-		if (Input.GetKey ("left")) {
+		if (Input.GetKeyDown ("left")) {
 
+			if (currentEmotion == 2){
+				currentEmotion = 1;
+			} else if (currentEmotion == 1){
+				currentEmotion = 0;
+			} else if (currentEmotion == 0){
+				currentEmotion = 2;
+			}
 
-
-		} else if (Input.GetKey ("right")) {
-
+		} else if (Input.GetKeyDown ("right")) {
+			if (currentEmotion == 2){
+				currentEmotion = 0;
+			} else if (currentEmotion == 1){
+				currentEmotion = 2;
+			} else if (currentEmotion == 0){
+				currentEmotion = 1;
+			}
 
 		} else {
 			//mouselook
@@ -147,6 +165,17 @@ public class Controller : MonoBehaviour {
 			//rotate user to mouse position
 			userRotation = Quaternion.AngleAxis (userTargetAngle, Vector3.forward);
 			user.transform.rotation = Quaternion.Slerp (user.transform.rotation, userRotation, Time.deltaTime * rotationSpeed);
+		}
+
+		if (currentEmotion == 0) {
+			emotionText.GetComponent<TextMesh> ().text = "Anger";
+			emotionText.GetComponent<Animator> ().SetInteger("emotion", 0);
+		} else if (currentEmotion == 1) {
+			emotionText.GetComponent<TextMesh> ().text = "Compassion";
+			emotionText.GetComponent<Animator> ().SetInteger("emotion", 1);
+		} else if (currentEmotion == 2) {
+			emotionText.GetComponent<TextMesh> ().text = "Suspicion";
+			emotionText.GetComponent<Animator> ().SetInteger("emotion", 2);
 		}
 	
 
